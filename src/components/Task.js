@@ -1,6 +1,9 @@
-const Task = ({ task, onDelete }) => {
+const Task = ({ task, onDelete, onToggle }) => {
   return (
-    <div className="task">
+    <div
+      className={`task ${task.reminder ? "reminder" : ""}`}
+      onDoubleClick={() => onToggle(task.id)}
+    >
       <h3>
         {task.text}
         <i
@@ -10,7 +13,7 @@ const Task = ({ task, onDelete }) => {
           onClick={() => onDelete(task.id)}
         ></i>
       </h3>
-      <p>{task.date}</p>
+      <p>{task.day}</p>
     </div>
   );
 };
